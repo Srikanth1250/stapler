@@ -1,23 +1,22 @@
-# Stage 1: Build the Jenkins plugin
+# Stage 1: Build Jenkins plugin using Maven and Java 11
 FROM maven:3.9.6-eclipse-temurin-11 AS builder
 
-# Set working directory
 WORKDIR /app
 
-# Copy Maven project files
+# Copy the Maven project files
 COPY pom.xml .
 COPY src ./src
 
-# Build plugin and skip tests for speed
+# Build Jenkins plugin (skip tests for faster build)
 RUN mvn clean install -DskipTests
 
-# Stage 2: Runtime (optional – if you only want to keep the .hpi file)
+# Stage 2: Final image with just the .hpi file
 FROM alpine:3.20
 
 WORKDIR /plugin
 
-# Copy .hpi file from builder stage
+# Copy the plugin from the build stage
 COPY --from=builder /app/target/*.hpi ./my-jenkins-plugin.hpi
 
-# Entry point just to inspect or mount the plugin
+# Default command to inspect the .hpi file
 CMD ["ls", "-l", "/plugin"]
