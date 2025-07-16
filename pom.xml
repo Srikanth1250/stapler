@@ -40,11 +40,10 @@
   </pluginRepositories>
 
   <dependencies>
-    <!-- Use correct version -->
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>script-security</artifactId>
-      <version>1242.vb_0065d3d5d6d</version>
+      <version>1168.ve632a_199f72c</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
