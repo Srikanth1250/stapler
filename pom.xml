@@ -5,17 +5,24 @@
 
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>org.jenkins-ci.plugins</groupId>
+    <artifactId>plugin</artifactId>
+    <version>4.54</version> <!-- Make sure this exists in Jenkins repo -->
+    <relativePath /> <!-- Important: do NOT try to resolve a local parent -->
+  </parent>
+
   <groupId>com.example.jenkins</groupId>
   <artifactId>my-jenkins-plugin</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>hpi</packaging>
 
+  <name>My Jenkins Plugin</name>
+  <description>Sample Jenkins plugin</description>
+  <url>http://example.com/jenkins-plugin</url>
+
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <jenkins.version>2.440.1</jenkins.version>
     <java.level>11</java.level>
-    <maven.compiler.source>${java.level}</maven.compiler.source>
-    <maven.compiler.target>${java.level}</maven.compiler.target>
   </properties>
 
   <repositories>
@@ -34,35 +41,11 @@
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.jenkins-ci.tools</groupId>
-        <artifactId>maven-hpi-plugin</artifactId>
-        <version>3.38</version>
-        <extensions>true</extensions>
-        <configuration>
-          <compatibleSinceVersion>1.0</compatibleSinceVersion>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
-        <configuration>
-          <source>${java.level}</source>
-          <target>${java.level}</target>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.3.0</version>
-      </plugin>
+      <!-- No need to manually declare maven-hpi-plugin or compiler plugin; parent handles that -->
     </plugins>
   </build>
 
   <dependencies>
-    <!-- Add Jenkins dependencies here -->
+    <!-- Jenkins plugin dependencies go here -->
   </dependencies>
 </project>
