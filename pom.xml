@@ -8,8 +8,8 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>4.54</version> <!-- Make sure this exists in Jenkins repo -->
-    <relativePath /> <!-- Important: do NOT try to resolve a local parent -->
+    <version>4.54</version>
+    <relativePath/> <!-- prevents looking for local parent -->
   </parent>
 
   <groupId>com.example.jenkins</groupId>
@@ -39,13 +39,14 @@
     </pluginRepository>
   </pluginRepositories>
 
-  <build>
-    <plugins>
-      <!-- No need to manually declare maven-hpi-plugin or compiler plugin; parent handles that -->
-    </plugins>
-  </build>
-
   <dependencies>
-    <!-- Jenkins plugin dependencies go here -->
+    <!-- Example Jenkins dependency -->
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>script-security</artifactId>
+      <version>1221.v35b_f8e1e1c75</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
+
 </project>
