@@ -1,5 +1,5 @@
-# Stage 1: Build Jenkins plugin
-FROM maven:3.9.6-eclipse-temurin-17 as builder
+# Stage 1: Maven build with Java 17
+FROM maven:3.9.6-eclipse-temurin-17 AS builder
 
 WORKDIR /app
 COPY pom.xml .
@@ -7,10 +7,10 @@ COPY src ./src
 
 RUN mvn clean install -DskipTests
 
-# Stage 2: Final minimal image with just the plugin
+# Stage 2: Final lightweight image with just plugin artifact
 FROM eclipse-temurin:17-jre
 
 WORKDIR /plugin
-COPY --from=builder /app/target/my-jenkins-plugin.hpi .
+COPY --from=builder /app/target/*.hpi .
 
-CMD ["echo", "Plugin built: my-jenkins-plugin.hpi"]
+CMD ["echo", "Jenkins Plugin built successfully."]
