@@ -1,17 +1,11 @@
-# Stage 1: Build the plugin
-FROM maven:3.9.6-eclipse-temurin-17 AS builder
+# Use Maven with Java 17 (required by Jenkins plugins)
+FROM maven:3.9.6-eclipse-temurin-17
 
-WORKDIR /app
-COPY pom.xml .
-COPY src ./src
+# Set working directory
+WORKDIR /splunk-plugin
 
-# Build the plugin (this step may fail if your plugin code has issues)
-RUN mvn clean install -DskipTests
+# Copy source code into the container
+COPY . .
 
-# Stage 2: Final image with only plugin artifact
-FROM eclipse-temurin:17-jre
-
-WORKDIR /plugin
-COPY --from=builder /app/target/*.hpi .
-
-CMD ["echo", "Jenkins plugin built successfully."]
+# Build and test the plugin
+CMD ["mvn", "test"]
