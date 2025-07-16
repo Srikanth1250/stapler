@@ -9,7 +9,7 @@
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
     <version>4.54</version>
-    <relativePath/> <!-- prevents looking for local parent -->
+    <relativePath/>
   </parent>
 
   <groupId>com.example.jenkins</groupId>
@@ -40,13 +40,12 @@
   </pluginRepositories>
 
   <dependencies>
-    <!-- Example Jenkins dependency -->
+    <!-- Use correct version -->
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>script-security</artifactId>
-      <version>1221.v35b_f8e1e1c75</version>
+      <version>1242.vb_0065d3d5d6d</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
-
 </project>
