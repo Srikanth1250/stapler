@@ -8,4 +8,4 @@ WORKDIR /splunk-plugin
 COPY . .
 
 # Build and test the plugin
-CMD ["mvn", "test"]
+CMD ["mvn", "test"]
